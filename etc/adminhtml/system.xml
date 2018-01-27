@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="hidden_price" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1"
+                 showInStore="0">
+            <class>separator-top</class>
+            <label>Hidden Price</label>
+            <tab>apiworks</tab>
+            <resource>Apiworks_HiddenPrice::config</resource>
+            <group id="login_for_price" translate="label" type="text" sortOrder="10" showInWebsite="1" showInStore="0"
+                   showInDefault="1">
+                <label>Login For Price</label>
+                <attribute type="expanded">1</attribute>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInStore="0"
+                       showInWebsite="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="message_type" translate="label" type="select" sortOrder="20" showInDefault="1" showInStore="1"
+                       showInWebsite="1">
+                    <label>Display message type</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <source_model>Apiworks\HiddenPrice\Model\Config\Source\MessageType</source_model>
+                </field>
+                <field id="message_text" translate="label" type="text" sortOrder="30" showInDefault="1" showInStore="0"
+                       showInWebsite="1">
+                    <label>Message Text</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="message_type">text</field>
+                    </depends>
+                </field>
+                <field id="message_static_block" translate="label" type="select" sortOrder="40" showInDefault="1" showInStore="0"
+                       showInWebsite="1">
+                    <label>Display Message Static Block</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="message_type">cms_block</field>
+                    </depends>
+                    <source_model>Apiworks\HiddenPrice\Model\Config\Source\CmsBlock</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
